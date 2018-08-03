@@ -8,6 +8,9 @@
     "email": "benjamin.vanryseghem@gmail.com",
     "url": "https://benjamin.vanryseghem.com"
   },
+  "scripts": {
+    "prepare": "gulp build:prod"
+  },
   "files": [
     "dist"
   ],
