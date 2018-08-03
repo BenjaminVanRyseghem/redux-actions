@@ -1,0 +1,49 @@
+{
+  "name": "switchless-redux-actions",
+  "version": "0.0.1",
+  "description": "Set of actions for a switchless redux",
+  "homepage": "https://github.com/BenjaminVanRyseghem/switchless-redux-actions",
+  "author": {
+    "name": "Benjamin Van Ryseghem",
+    "email": "benjamin.vanryseghem@gmail.com",
+    "url": "https://benjamin.vanryseghem.com"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/switchless-redux-actions.min.js",
+  "module": "src/index.js",
+  "keywords": [],
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-plugin-rewire-test-env-only": "^1.0.0",
+    "babel-plugin-wildcard": "^5.0.0",
+    "babel-preset-env": "^1.7.0",
+    "babelify": "^8.0.0",
+    "browserify": "^16.2.2",
+    "browserify-shim": "^3.8.14",
+    "eslint": "^5.1.0",
+    "eslint-config-benjamin-van-ryseghem": "^1.0.7",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^5.0.0",
+    "gulp-inline": "^0.1.3",
+    "gulp-rename": "^1.3.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "minimist": "^1.2.0",
+    "require-dir": "^1.0.0",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-paths": "^2.1.0",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "license": "MIT",
+  "repository": "BenjaminVanRyseghem/switchless-redux-actions",
+  "dependencies": {
+    "pascal-case": "^2.0.1",
+    "redux": "^4.0.0",
+    "redux-api-middleware-plain-object": "^2.3.0",
+    "redux-logger": "^3.0.6"
+  }
+}
