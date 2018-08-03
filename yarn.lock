@@ -3955,9 +3955,9 @@ rechoir@^0.6.2:
   dependencies:
     resolve "^1.1.6"
 
-redux-api-middleware-plain-object@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/redux-api-middleware-plain-object/-/redux-api-middleware-plain-object-2.3.0.tgz#5f280b204fc0d2fb7b84c1d33a400489f90bc193"
+redux-api-middleware-plain-object@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/redux-api-middleware-plain-object/-/redux-api-middleware-plain-object-2.3.1.tgz#98d44f0733e56d006aa0e8d6d162a9c10b6fe8d5"
   dependencies:
     babel-plugin-transform-runtime "^6.23.0"
     babel-runtime "^6.25.0"

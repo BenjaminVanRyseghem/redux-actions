@@ -1,7 +1,5 @@
 import { CALL_API, RSAA } from "redux-api-middleware-plain-object";
 
-const validKeys = ["type", "payload", "meta"];
-
 /*
  * Todo: Extract
  */
@@ -60,15 +58,6 @@ const sendRequest = ({ action, headers }) => {
 		})
 	];
 
-	// Hide stuff to pass Redux check :smile:
-	params.types.forEach((type) => {
-		for (let key in type) {
-			if (validKeys.indexOf(key) === -1) {
-				Object.defineProperty(type, key, { enumerable: false });
-			}
-		}
-	});
-
 	if (action.body()) {
 		params.body = JSON.stringify(action.body());
 	}
@@ -85,9 +74,9 @@ const requestApi = (action, headers = action.headers()) => {
 	store.dispatch(requestAction);
 };
 
-export default function initialize({ store, url }) {
+export default function initialize({ store: storeInstance, url }) {
 	setUrl(url);
-	setStore(store);
+	setStore(storeInstance);
 
 	return requestApi;
 }
