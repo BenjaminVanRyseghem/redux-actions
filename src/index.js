@@ -5,11 +5,14 @@ import { apiMiddleware } from "redux-api-middleware-plain-object";
 
 import fetcher from "./fetcher/fetcher";
 
+import { wrapper } from "./reducers/";
+
 export {
 	abstractAction,
 	abstractRequestAction,
 	abstractRSAAAction,
 	registerReducer,
 	fetcher,
-	apiMiddleware
+	apiMiddleware,
+	wrapper
 };

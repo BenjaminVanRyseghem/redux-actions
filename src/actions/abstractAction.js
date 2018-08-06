@@ -13,6 +13,7 @@ export function registerReducer(name) {
  * - dodge redux plain object check
  * - avoid exposing `payload` to avoid mutations
  *
+ * @alias AbstractAction
  * @abstract
  *
  * @param {*} payload - Action payload
