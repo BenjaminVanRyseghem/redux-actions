@@ -11,12 +11,20 @@ const API_CONNECT = {
 let formatReceivedData = (data) => data;
 let formatReceivedHeaders = (data) => data;
 
+/**
+ * Set base url to use
+ * @param {string} url - URL to use
+ */
 function setUrl(url) {
 	API_CONNECT.url = url;
 }
 
-let store;
+let store = null;
 
+/**
+ * Set store to use
+ * @param {Object} newStore - Store to use
+ */
 function setStore(newStore) {
 	store = newStore;
 }
@@ -74,6 +82,14 @@ const requestApi = (action, headers = action.headers()) => {
 	store.dispatch(requestAction);
 };
 
+/**
+ * Initialize the fetcher and returns the fetching function.
+ *
+ * @param {Object} params - Parameters object
+ * @param {store} params.store - Store to use
+ * @param {string} params.url - Base url for requests
+ * @return {requestApi} - Fetching function
+ */
 export default function initialize({ store: storeInstance, url }) {
 	setUrl(url);
 	setStore(storeInstance);
