@@ -1,6 +1,6 @@
 {
   "name": "switchless-redux-actions",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Set of actions for a switchless redux",
   "homepage": "https://github.com/BenjaminVanRyseghem/switchless-redux-actions",
   "author": {
