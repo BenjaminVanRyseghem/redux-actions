@@ -20,4 +20,4 @@ export function wrapper(reducer, name) {
 	registerReducer(name);
 
 	return (state, action) => Object.assign({}, state, reducer(state, action) || {});
-};
+}
