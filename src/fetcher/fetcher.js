@@ -1,4 +1,5 @@
 import { CALL_API, RSAA } from "redux-api-middleware-plain-object";
+import flattenPrototype from "../helpers/flattenPrototype";
 
 /*
  * Todo: Extract
@@ -47,14 +48,16 @@ const sendRequest = ({ action, headers }) => {
 	let FailureAction = action.actions().failure;
 
 	params.types = [
-		action.instanciateAction(RequestAction, { payload: ({ [RSAA]: { endpoint } }) => ({ endpoint }) }),
-		action.instanciateAction(SuccessAction, {
+		flattenPrototype(action.instanciateAction(RequestAction, {
+			payload: ({ [RSAA]: { endpoint } }) => ({ endpoint })
+		})),
+		flattenPrototype(action.instanciateAction(SuccessAction, {
 			payload: (__, state, res) => res.json().then((data) => ({
 				data: formatReceivedData(data),
 				headers: formatReceivedHeaders(res.headers)
 			}))
-		}),
-		action.instanciateAction(FailureAction, {
+		})),
+		flattenPrototype(action.instanciateAction(FailureAction, {
 			meta: (__, state, res) => (res
 				? {
 					status: res.status,
@@ -63,7 +66,7 @@ const sendRequest = ({ action, headers }) => {
 				: {
 					status: "Network request failed"
 				})
-		})
+		}))
 	];
 
 	if (action.body()) {

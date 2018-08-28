@@ -1,12 +1,8 @@
-import abstractAction from "../abstractAction";
-import abstractRsaaAction from "./abstractRsaaAction";
+import AbstractAction from "../abstractAction";
+import AbstractRsaaAction from "./abstractRsaaAction";
 
 /**
  * AbstractRequestAction is the abstraction of a redux-api action.
- *
- * We use the Crockford style here for 2 things:
- * - dodge redux plain object check
- * - avoid exposing `payload` to avoid mutations
  *
  * @abstract
  * @extends AbstractAction
@@ -15,33 +11,35 @@ import abstractRsaaAction from "./abstractRsaaAction";
  * @param {Object} [my] - Protected properties holder
  * @constructor AbstractRequestAction
  */
-export default function AbstractRequestAction(spec, my = {}) {
-	/** @lends AbstractRequestAction.prototype */
-	let that = abstractAction(spec, my);
+export default class AbstractRequestAction extends AbstractAction {
+	constructor(spec) {
+		super(...arguments); // eslint-disable-line prefer-rest-params
 
-	that.isRequestAction = true;
-	that.isAction = true;
-	that.type = "AbstractRequestAction";
+		this.isRequestAction = true;
+		this.type = "AbstractRequestAction";
 
-	my.endpoint = "you should override AbstractRequestAction/my.endpoint";
-	my.schema = {};
-	my.body = null;
+		this._endpoint = "you should override AbstractRequestAction/this._endpoint";
+		this._schema = {};
+		this._body = null;
 
-	my.actions = {
-		success: abstractRsaaAction,
-		failure: abstractRsaaAction,
-		request: abstractRsaaAction
-	};
+		this._actions = {
+			success: AbstractRsaaAction,
+			failure: AbstractRsaaAction,
+			request: AbstractRsaaAction
+		};
 
-	that.method = () => "GET";
-	that.headers = () => ({});
+		this.instanciateAction = (Action, data) => new Action(Object.assign({}, { originalAction: this }, spec, data));
+	}
 
-	that.endpoint = () => my.endpoint;
-	that.schema = () => my.schema;
-	that.body = () => my.body;
-	that.actions = () => my.actions;
+	method() { return "GET"; }
 
-	that.instanciateAction = (Action, data) => new Action(Object.assign({}, { originalAction: that }, spec, data));
+	headers() { return {}; }
 
-	return that;
+	endpoint() { return this._endpoint; }
+
+	schema() { return this._schema; }
+
+	body() { return this._body; }
+
+	actions() { return this._actions; }
 }
