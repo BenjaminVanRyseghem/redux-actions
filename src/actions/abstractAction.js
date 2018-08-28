@@ -21,7 +21,9 @@ export default class AbstractAction {
 		this.type = "AbstractAction";
 
 		reducers.forEach((name) => {
-			this[`perform${name}`] = (state) => state;
+			if (!this[`perform${name}`]) {
+				this[`perform${name}`] = (state) => state;
+			}
 		});
 	}
 }
