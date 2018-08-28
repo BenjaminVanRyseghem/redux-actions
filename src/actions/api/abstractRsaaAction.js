@@ -1,4 +1,4 @@
-import abstractAction from "../abstractAction";
+import AbstractAction from "../abstractAction";
 
 /**
  * @constructor AbstractRSAAAction
@@ -11,14 +11,16 @@ import abstractAction from "../abstractAction";
  * @param {*} params.meta - Action payload
  * @param {Object} [my] - Protected properties holder
  */
-export default function AbstractRSAAAction({ payload, meta }, my = {}) {
-	/** @lends AbstractRSAAAction.prototype */
-	let that = abstractAction(payload, my);
+export default class AbstractRsaaAction extends AbstractAction {
+	constructor({ payload, meta }) {
+		super(...arguments); // eslint-disable-line prefer-rest-params
 
-	my.meta = meta;
+		this.type = "AbstractRsaaAction";
+		this._payload = payload;
+		this._meta = meta;
+	}
 
-	that.meta = () => my.meta;
-	that.payload = (...args) => my.payload(...args);
+	payload(...args) { return this._payload(...args); }
 
-	return that;
+	meta() { return this._meta; }
 }

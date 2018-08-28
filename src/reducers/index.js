@@ -1,3 +1,5 @@
+import flattenPrototype from "../helpers/flattenPrototype";
+import { createStore as reduxCreateStore } from "redux";
 import { registerReducer } from "../actions/abstractAction";
 
 /**
@@ -20,4 +22,17 @@ export function wrapper(reducer, name) {
 	registerReducer(name);
 
 	return (state, action) => Object.assign({}, state, reducer(state, action) || {});
+}
+
+/**
+ * Wrapper around redux/createStore to ensure the action are `flattenPrototype`
+ * @param {any} args - redux createStore arguments
+ * @return {*} A store
+ */
+export function createStore(...args) {
+	let store = reduxCreateStore(...args);
+	store.dispatch = ((fn) => (action) => {
+		fn(flattenPrototype(action));
+	})(store.dispatch);
+	return store;
 }
