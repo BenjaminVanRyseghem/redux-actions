@@ -15,7 +15,6 @@
     "dist"
   ],
   "main": "dist/switchless-redux-actions.min.js",
-  "module": "src/index.js",
   "keywords": [],
   "devDependencies": {
     "babel-core": "^6.26.3",
