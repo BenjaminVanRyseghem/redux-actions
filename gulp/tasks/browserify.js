@@ -11,7 +11,7 @@ const bundler = browserify(config.settings);
 
 gulp.task("browserify", ["browserify:regular", "browserify:min"], () => {});
 gulp.task("browserify:regular", bundle);
-gulp.task("browserify:min", bundleMin);
+gulp.task("browserify:min", ["environment:prod"], bundleMin);
 bundler.on("update", bundle);
 
 /**
